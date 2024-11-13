@@ -1,3 +1,18 @@
+:root {
+    --text-color: black;
+    --background-color: white;
+}
+
+[data-theme="dark"] {
+    --text-color: white;
+    --background-color: black;
+}
+
+input, textarea {
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+  
 .container {
     display: flex;
     align-items: center;
