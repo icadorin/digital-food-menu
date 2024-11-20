@@ -12,7 +12,6 @@ A Spring Boot API for managing a digital food menu with basic CRUD operations. T
 
 - **Java & Spring Boot**: Core framework for building the API.
 - **JPA (Java Persistence API)**: For seamless database integration.
-- **Lombok**: Simplifies model classes with annotations for getters, constructors, and more.
 - **Spring Data JPA**: Simplifies database access with the `JpaRepository`.
 
 ## 🌐 Frontend Technologies Used

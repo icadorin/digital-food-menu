@@ -27,13 +27,13 @@ class FoodRepositoryTest {
 
     @Test
     void shouldFindFoodById() {
-        Food food = new Food(null, "Pasta", "pasta.jpg", 15);
+        Food food = new Food(null, "Pastel", "pastel.jpg", 15);
         Food savedFood = repository.save(food);
 
         Optional<Food> foundFood = repository.findById(savedFood.getId());
 
         assertThat(foundFood).isPresent();
-        assertThat(foundFood.get().getTitle()).isEqualTo("Pasta");
+        assertThat(foundFood.get().getTitle()).isEqualTo("Pastel");
     }
 
     @Test

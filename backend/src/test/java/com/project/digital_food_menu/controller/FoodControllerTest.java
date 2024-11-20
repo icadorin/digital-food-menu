@@ -52,13 +52,13 @@ class FoodControllerTest {
     @Test
     void shouldReturnAllFoods() throws Exception {
         repository.save(new Food(null, "Pizza", "pizza.jpg", 25));
-        repository.save(new Food(null, "Pasta", "pasta.jpg", 20));
+        repository.save(new Food(null, "Pastel", "pastel.jpg", 20));
 
         mockMvc.perform(get("/food"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.length()").value(2))
                 .andExpect(jsonPath("$[0].title").value("Pizza"))
-                .andExpect(jsonPath("$[1].title").value("Pasta"));
+                .andExpect(jsonPath("$[1].title").value("Pastel"));
     }
 }
