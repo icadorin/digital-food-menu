@@ -16,7 +16,7 @@ class FoodRepositoryTest {
 
     @Test
     void shouldSaveFoodSuccessfully() {
-        Food food = new Food(null, "Pizza", "pizza.jpg", 25);
+        Food food = createTestFood("Pizza", "pizza.jpg", 25);
 
         Food savedFood = repository.save(food);
 
@@ -27,7 +27,7 @@ class FoodRepositoryTest {
 
     @Test
     void shouldFindFoodById() {
-        Food food = new Food(null, "Pastel", "pastel.jpg", 15);
+        Food food = createTestFood("Pastel", "pastel.jpg", 15);
         Food savedFood = repository.save(food);
 
         Optional<Food> foundFood = repository.findById(savedFood.getId());
@@ -38,9 +38,12 @@ class FoodRepositoryTest {
 
     @Test
     void shouldReturnEmptyWhenFoodNotFound() {
-
         Optional<Food> foundFood = repository.findById(999L);
 
         assertThat(foundFood).isEmpty();
+    }
+
+    private Food createTestFood(String title, String image, int price) {
+        return new Food(null, title, image, price);
     }
 }

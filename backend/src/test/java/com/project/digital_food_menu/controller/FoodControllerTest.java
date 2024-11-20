@@ -12,6 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.List;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -35,9 +37,12 @@ class FoodControllerTest {
         repository.deleteAll();
     }
 
+    private void addTestFoods(List<Food> foods) {
+        repository.saveAll(foods);
+    }
+
     @Test
     void shouldSaveFoodSuccessfully() throws Exception {
-
         FoodRequestDTO foodRequest = new FoodRequestDTO("Burger", "burger.jpg", 20);
 
         mockMvc.perform(post("/food")
@@ -51,8 +56,10 @@ class FoodControllerTest {
 
     @Test
     void shouldReturnAllFoods() throws Exception {
-        repository.save(new Food(null, "Pizza", "pizza.jpg", 25));
-        repository.save(new Food(null, "Pastel", "pastel.jpg", 20));
+        addTestFoods(List.of(
+                new Food(null, "Pizza", "pizza.jpg", 25),
+                new Food(null, "Pastel", "pastel.jpg", 20)
+        ));
 
         mockMvc.perform(get("/food"))
                 .andExpect(status().isOk())
